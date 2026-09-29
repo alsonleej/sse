@@ -1,4 +1,4 @@
-export const BRAND = 'Mixa'
+export const BRAND = 'Mixie'
 export const TAGLINE = 'Fresh fuel in 60 seconds'
 export const MAX_TOTAL = 3
 export const SIZE_PRICES = { 300: 59, 400: 69 } as const

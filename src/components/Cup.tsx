@@ -6,7 +6,7 @@ export function Cup({ filling }: Props) {
   return (
     <svg viewBox="0 0 160 210" className="cup" aria-hidden="true">
       <defs>
-        <clipPath id="mixa-cup">
+        <clipPath id="mixie-cup">
           <path d="M46 36h68l-8 140a24 14 0 0 1-52 0z" />
         </clipPath>
       </defs>
@@ -17,7 +17,7 @@ export function Cup({ filling }: Props) {
         strokeWidth="4"
         strokeLinejoin="round"
       />
-      <g clipPath="url(#mixa-cup)">
+      <g clipPath="url(#mixie-cup)">
         <g className={filling ? 'cup-fill cup-fill-rise' : 'cup-fill'}>
           <rect x="30" y="70" width="100" height="130" fill="#FF8A1A" />
           <path d="M30 78c12 8 20 8 32 0s22-8 34 0 22 8 34 0v-20H30z" fill="#FFB15A" />

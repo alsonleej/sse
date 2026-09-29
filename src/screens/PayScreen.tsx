@@ -67,7 +67,7 @@ export function PayScreen({ order, onBack, onPay }: Props) {
         <figure className="smoothie">
           <SmoothieArt />
           <figcaption className="smoothie-label">
-            <span className="smoothie-brand">mixa</span>
+            <span className="smoothie-brand">mixie</span>
             <span className="smoothie-size">{order.size}ml</span>
           </figcaption>
         </figure>

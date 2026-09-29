@@ -5,7 +5,7 @@ export function TopBar({ left }: { left?: ReactNode }) {
   return (
     <header className="topbar">
       <div className="topbar-slot">{left}</div>
-      <div className="brand">mixa</div>
+      <div className="brand">mixie</div>
       <LangToggle />
     </header>
   )
