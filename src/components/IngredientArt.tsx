@@ -96,22 +96,20 @@ function Blueberry() {
   )
 }
 
-function Spinach() {
+function Apple() {
   return (
     <>
-      <ellipse cx="60" cy="106" rx="22" ry="5" fill="#3A2A22" opacity="0.08" />
+      <ellipse cx="60" cy="104" rx="26" ry="5" fill="#3A2A22" opacity="0.08" />
       <path
-        d="M60 24c22 8 36 28 32 52-4 22-20 36-32 38-12-2-28-16-32-38C24 52 38 32 60 24z"
-        fill="#4CAF50"
+        d="M60 38c16-2 30 10 32 28 2 20-8 40-22 46-16 6-34 0-40-18-6-16-2-36 10-48 6-4 14-8 20-8z"
+        fill="#E23B3B"
         stroke="#3A2A22"
         strokeWidth="2.5"
       />
-      <path d="M60 30c-2 24-4 46-2 64" fill="none" stroke="#2E7D32" strokeWidth="2.4" strokeLinecap="round" />
-      <path d="M58 48c-12 4-18 8-22 14" fill="none" stroke="#2E7D32" strokeWidth="2" strokeLinecap="round" />
-      <path d="M62 60c12 2 18 8 24 12" fill="none" stroke="#2E7D32" strokeWidth="2" strokeLinecap="round" />
-      <path d="M58 76c-10 4-14 8-16 12" fill="none" stroke="#2E7D32" strokeWidth="2" strokeLinecap="round" />
-      <ellipse cx="46" cy="58" rx="8" ry="5" fill="#B6E3A8" opacity="0.55" />
-      <Face x={60} y={64} />
+      <path d="M48 52c6 4 10 14 8 26" fill="none" stroke="#FF8A8A" strokeWidth="4" strokeLinecap="round" opacity="0.75" />
+      <path d="M60 40c2-10 8-16 14-18" fill="none" stroke="#6B4428" strokeWidth="2.6" strokeLinecap="round" />
+      <path d="M70 24c8-8 16-8 18-4-6 0-10 4-12 10-2-2-4-4-6-6z" fill="#46A84E" stroke="#3A2A22" strokeWidth="2" strokeLinejoin="round" />
+      <Face x={58} y={74} />
     </>
   )
 }
@@ -130,69 +128,13 @@ function Orange() {
   )
 }
 
-function Ginger() {
-  return (
-    <>
-      <ellipse cx="60" cy="106" rx="30" ry="5" fill="#3A2A22" opacity="0.08" />
-      <g fill="#E2A45C" stroke="#3A2A22" strokeWidth="2.5">
-        <ellipse cx="60" cy="76" rx="30" ry="16" />
-        <ellipse cx="34" cy="64" rx="14" ry="12" />
-        <ellipse cx="84" cy="62" rx="16" ry="13" />
-        <ellipse cx="96" cy="80" rx="11" ry="10" />
-        <circle cx="46" cy="50" r="8" />
-      </g>
-      <path d="M40 72c8 1 14 2 20 0" fill="none" stroke="#F6D7A8" strokeWidth="3" strokeLinecap="round" />
-      <Face x={60} y={76} />
-    </>
-  )
-}
-
-function Avocado() {
-  return (
-    <>
-      <ellipse cx="60" cy="106" rx="24" ry="5" fill="#3A2A22" opacity="0.08" />
-      <path
-        d="M60 22c18 6 30 28 28 50-2 24-14 40-28 42-14-2-26-18-28-42  -2-22 10-44 28-50z"
-        fill="#5E9A3C"
-        stroke="#3A2A22"
-        strokeWidth="2.5"
-      />
-      <path
-        d="M60 40c10 4 16 16 15 28-1 14-8 24-15 26-7-2-14-12-15-26  -1-12 5-24 15-28z"
-        fill="#D7ECA8"
-        stroke="#3A2A22"
-        strokeWidth="2"
-      />
-      <circle cx="60" cy="68" r="10" fill="#8A4E2A" stroke="#3A2A22" strokeWidth="2" />
-      <path d="M60 22c2-6 6-8 8-8-2 4-2 6 0 8-4 0-6 0-8 0z" fill="#6B4428" stroke="#3A2A22" strokeWidth="1.8" strokeLinejoin="round" />
-      <Face x={60} y={86} />
-    </>
-  )
-}
-
-function DateFruit() {
-  return (
-    <>
-      <ellipse cx="60" cy="104" rx="22" ry="5" fill="#3A2A22" opacity="0.08" />
-      <ellipse cx="60" cy="70" rx="26" ry="34" fill="#8A4B2C" stroke="#3A2A22" strokeWidth="2.5" />
-      <ellipse cx="60" cy="74" rx="16" ry="22" fill="#A8643E" />
-      <path d="M48 58c6 4 8 8 6 14M66 54c4 6 4 12 2 18M52 84c6 3 10 3 16 0" fill="none" stroke="#6B381F" strokeWidth="1.6" strokeLinecap="round" opacity="0.7" />
-      <path d="M60 36c2-6 1-10 4-12" fill="none" stroke="#5C4030" strokeWidth="2" strokeLinecap="round" />
-      <Face x={60} y={74} />
-    </>
-  )
-}
-
 const arts: Record<IngredientId, () => ReactElement> = {
-  strawberry: Strawberry,
+  apple: Apple,
   banana: Banana,
-  mango: Mango,
+  strawberry: Strawberry,
   blueberry: Blueberry,
-  spinach: Spinach,
   orange: Orange,
-  ginger: Ginger,
-  avocado: Avocado,
-  date: DateFruit,
+  mango: Mango,
 }
 
 export function IngredientArt({ id }: { id: IngredientId }) {

@@ -2,19 +2,17 @@ import {
   BOOSTER_PRICE,
   type BoosterId,
   type IngredientId,
+  CUP_PRICE,
   ingredients,
   MAX_TOTAL,
   recipes,
-  SIZE_PRICES,
-  type Size,
 } from './config'
 
 export type Portions = Record<IngredientId, number>
 
 export type Order = {
   portions: Portions
-  size: Size
-  booster: BoosterId | null
+  boosters: BoosterId[]
 }
 
 export function emptyPortions(): Portions {
@@ -22,7 +20,7 @@ export function emptyPortions(): Portions {
 }
 
 export function initialOrder(): Order {
-  return { portions: emptyPortions(), size: 400, booster: null }
+  return { portions: emptyPortions(), boosters: [] }
 }
 
 export function portionsFrom(partial: Partial<Portions>): Portions {
@@ -52,8 +50,12 @@ export function hasFruit(portions: Portions): boolean {
   return ingredients.some((item) => portions[item.id] > 0)
 }
 
+export function toggleBooster(selected: BoosterId[], id: BoosterId): BoosterId[] {
+  return selected.includes(id) ? selected.filter((item) => item !== id) : [...selected, id]
+}
+
 export function priceOf(order: Order): number {
-  return SIZE_PRICES[order.size] + (order.booster ? BOOSTER_PRICE : 0)
+  return CUP_PRICE + order.boosters.length * BOOSTER_PRICE
 }
 
 export function chosenIngredients(portions: Portions) {

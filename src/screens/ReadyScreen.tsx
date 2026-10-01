@@ -1,5 +1,6 @@
 import { Cup } from '../components/Cup'
 import { TopBar } from '../components/TopBar'
+import { CUP_ML } from '../config'
 import { drinkName, useI18n } from '../i18n'
 import type { Order } from '../order'
 
@@ -10,7 +11,7 @@ type Props = {
 
 export function ReadyScreen({ order, onReset }: Props) {
   const { t } = useI18n()
-  const booster = order.booster
+  const boosterNames = order.boosters.map((id) => t.boosterName[id])
 
   return (
     <div className="stage stage-center">
@@ -21,7 +22,7 @@ export function ReadyScreen({ order, onReset }: Props) {
           {t.readyLead} {drinkName(order.portions, t)} {t.ready}
         </h2>
         <p className="section-note">
-          {order.size} ml{booster ? ` · ${t.boosterName[booster]}` : ''}
+          {CUP_ML} ml{boosterNames.length > 0 ? ` · ${boosterNames.join(', ')}` : ''}
         </p>
         <p className="idle-kicker">{t.again}</p>
       </button>

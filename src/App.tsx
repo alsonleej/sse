@@ -1,6 +1,6 @@
 import { useCallback, useReducer } from 'react'
-import { type BoosterId, type IngredientId, type Size } from './config'
-import { emptyPortions, hasFruit, initialOrder, type Order, type Portions, withPortion } from './order'
+import { type BoosterId, type IngredientId } from './config'
+import { emptyPortions, hasFruit, initialOrder, type Order, type Portions, toggleBooster, withPortion } from './order'
 import { I18nProvider } from './i18n'
 import { BlendScreen } from './screens/BlendScreen'
 import { IdleScreen } from './screens/IdleScreen'
@@ -19,8 +19,8 @@ type Action =
   | { type: 'start' }
   | { type: 'setPortion'; id: IngredientId; value: number }
   | { type: 'applyRecipe'; portions: Portions }
-  | { type: 'setSize'; size: Size }
-  | { type: 'setBooster'; booster: BoosterId | null }
+  | { type: 'toggleBooster'; id: BoosterId }
+  | { type: 'clearBoosters' }
   | { type: 'clear' }
   | { type: 'toPay' }
   | { type: 'backToOrder' }
@@ -44,10 +44,13 @@ function reducer(state: State, action: Action): State {
       }
     case 'applyRecipe':
       return { ...state, order: { ...state.order, portions: action.portions } }
-    case 'setSize':
-      return { ...state, order: { ...state.order, size: action.size } }
-    case 'setBooster':
-      return { ...state, order: { ...state.order, booster: action.booster } }
+    case 'toggleBooster':
+      return {
+        ...state,
+        order: { ...state.order, boosters: toggleBooster(state.order.boosters, action.id) },
+      }
+    case 'clearBoosters':
+      return { ...state, order: { ...state.order, boosters: [] } }
     case 'clear':
       return { ...state, order: { ...state.order, portions: emptyPortions() } }
     case 'toPay':
@@ -77,8 +80,8 @@ export function App() {
           order={state.order}
           onPortion={(id, value) => dispatch({ type: 'setPortion', id, value })}
           onRecipe={(portions) => dispatch({ type: 'applyRecipe', portions })}
-          onSize={(size) => dispatch({ type: 'setSize', size })}
-          onBooster={(booster) => dispatch({ type: 'setBooster', booster })}
+          onToggleBooster={(id) => dispatch({ type: 'toggleBooster', id })}
+          onClearBoosters={() => dispatch({ type: 'clearBoosters' })}
           onClear={() => dispatch({ type: 'clear' })}
           onPay={() => dispatch({ type: 'toPay' })}
           onCancel={() => dispatch({ type: 'reset' })}

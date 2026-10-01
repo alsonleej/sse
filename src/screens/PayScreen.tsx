@@ -1,7 +1,7 @@
 import { IngredientArt } from '../components/IngredientArt'
 import { SmoothieArt } from '../components/SmoothieArt'
 import { TopBar } from '../components/TopBar'
-import { boosters } from '../config'
+import { CUP_ML } from '../config'
 import { useI18n } from '../i18n'
 import { chosenIngredients, priceOf, type Order } from '../order'
 
@@ -13,7 +13,6 @@ type Props = {
 
 export function PayScreen({ order, onBack, onPay }: Props) {
   const { t } = useI18n()
-  const booster = boosters.find((item) => item.id === order.booster)
   const lines = chosenIngredients(order.portions)
 
   return (
@@ -28,10 +27,6 @@ export function PayScreen({ order, onBack, onPay }: Props) {
 
       <div className="stage-body">
         <ul className="lines">
-          <li>
-            <span>{t.oat}</span>
-            <span>{t.base}</span>
-          </li>
           {lines.map((item) => (
             <li key={item.id}>
               <span>{t.ingredient[item.id]}</span>
@@ -40,14 +35,23 @@ export function PayScreen({ order, onBack, onPay }: Props) {
           ))}
           <li>
             <span>{t.size}</span>
-            <span>{order.size} ml</span>
+            <span>{CUP_ML} ml</span>
           </li>
-          <li>
-            <span>{booster ? t.boosterName[booster.id] : t.booster}</span>
-            <span>{booster ? '+15 kr' : t.none}</span>
-          </li>
+          {order.boosters.length === 0 ? (
+            <li>
+              <span>{t.booster}</span>
+              <span>{t.none}</span>
+            </li>
+          ) : (
+            order.boosters.map((id) => (
+              <li key={id}>
+                <span>{t.boosterName[id]}</span>
+                <span>+15 kr</span>
+              </li>
+            ))
+          )}
         </ul>
-        {booster && 'allergen' in booster ? <p className="allergen">{t.milk}</p> : null}
+        {order.boosters.includes('whey') ? <p className="allergen">{t.milk}</p> : null}
 
         <div className="picked">
           {lines.map((item) => (
@@ -68,7 +72,7 @@ export function PayScreen({ order, onBack, onPay }: Props) {
           <SmoothieArt />
           <figcaption className="smoothie-label">
             <span className="smoothie-brand">mixie</span>
-            <span className="smoothie-size">{order.size}ml</span>
+            <span className="smoothie-size">{CUP_ML}ml</span>
           </figcaption>
         </figure>
       </div>

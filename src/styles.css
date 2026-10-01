@@ -582,7 +582,7 @@ button:disabled {
   }
 
   .ingredients {
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 
