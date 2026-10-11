@@ -498,17 +498,6 @@ button:disabled {
   height: auto;
 }
 
-.cup-fill-rise {
-  transform: translateY(78%);
-  animation: rise 4.4s ease-in forwards;
-}
-
-@keyframes rise {
-  to {
-    transform: translateY(0);
-  }
-}
-
 .idle-screen {
   position: relative;
   flex: 1;
@@ -592,9 +581,3 @@ button:disabled {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .cup-fill-rise {
-    animation: none;
-    transform: translateY(0);
-  }
-}
